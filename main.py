@@ -27,19 +27,28 @@ def validar_numero(num):
         return False, None
 
 
+def solicitar_numero(mensaje):
+    """
+    Solicita entrada de usuario para un número entero positivo.
+
+    Args:
+    mensaje (str): El mensaje que se muestra al solicitar la entrada.
+
+    Returns:
+    int: El número entero positivo ingresado por el usuario.
+    """
+    while True:
+        num = input(mensaje)
+        valido, num = validar_numero(num)
+        if valido:
+            return num
+
 # Solicitar entrada de usuario para el primer número
-while True:
-    num1 = input("Ingrese el primer número entero positivo: ")
-    valido, num1 = validar_numero(num1)
-    if valido:
-        break
+num1 = solicitar_numero("Ingrese el primer número entero positivo: ")
 
 # Solicitar entrada de usuario para el segundo número
-while True:
-    num2 = input("Ingrese el segundo número entero positivo: ")
-    valido, num2 = validar_numero(num2)
-    if valido:
-        break
+num2 = solicitar_numero("Ingrese el segundo número entero positivo: ")
+
 
 # Calcular y mostrar el MCD
 print("El Máximo Común Divisor de", num1, "y", num2, "es:", gcd(num1, num2))
